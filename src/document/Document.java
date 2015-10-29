@@ -50,10 +50,21 @@ public abstract class Document {
 	// next week when we implement the EfficientDocument class.
 	protected int countSyllables(String word)
 	{
-		// TODO: Implement this method so that you can call it from the 
-	    // getNumSyllables method in BasicDocument (module 1) and 
-	    // EfficientDocument (module 2).
-	    return 0;
+		String store = this.text;
+		this.text = word;
+		if (word.charAt(word.length() - 1) == 'e')
+		{
+			List<String> syllables = getTokens("[aeiouyAEIOUY]+");
+			this.text = store;
+			if (syllables.size() == 1)
+				return 1;
+			else return syllables.size() - 1;
+		}
+		else {
+			List<String> syllables = getTokens("[aeiouyAEIOUY]+");
+			this.text = store;
+			return syllables.size();
+		}
 	}
 	
 	/** A method for testing
@@ -116,8 +127,8 @@ public abstract class Document {
 	/** return the Flesch readability score of this document */
 	public double getFleschScore()
 	{
-	    // TODO: Implement this method
-	    return 0.0;
+		double FleschScore = 206.835 - (1.015 * ((double)this.getNumWords()/(double)this.getNumSentences())) - (84.6 * ((double)this.getNumSyllables()/(double)this.getNumWords()));
+	    return FleschScore;
 	}
 	
 	
