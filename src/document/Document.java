@@ -127,8 +127,7 @@ public abstract class Document {
 	/** return the Flesch readability score of this document */
 	public double getFleschScore()
 	{
-		double FleschScore = 206.835 - (1.015 * ((double)this.getNumWords()/(double)this.getNumSentences())) - (84.6 * ((double)this.getNumSyllables()/(double)this.getNumWords()));
-	    return FleschScore;
+	    return 206.835 - (1.015 * ((double)this.getNumWords()/(double)this.getNumSentences())) - (84.6 * ((double)this.getNumSyllables()/(double)this.getNumWords()));
 	}
 	
 	
