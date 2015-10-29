@@ -79,6 +79,8 @@ public class BasicDocument extends Document
 		testCase(new BasicDocument("sentence, with, lots, of, commas.!  "
 		        + "(And some poaren)).  The output is: 7.5."), 15, 11, 4);
 		testCase(new BasicDocument("many???  Senteeeeeeeeeences are"), 6, 3, 2);		
+		testCase(new BasicDocument("segue"), 2, 1, 1);
+		testCase(new BasicDocument("double"), 1, 1, 1);
 	}
 	
 }

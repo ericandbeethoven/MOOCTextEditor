@@ -58,7 +58,13 @@ public abstract class Document {
 			this.text = store;
 			if (syllables.size() == 1)
 				return 1;
-			else return syllables.size() - 1;
+			else if ((syllables.get(syllables.size() - 1)).charAt(0) == 'e')
+			{
+				return syllables.size() - 1;
+			}
+			else {
+				return syllables.size();
+			}
 		}
 		else {
 			List<String> syllables = getTokens("[aeiouyAEIOUY]+");
@@ -127,7 +133,7 @@ public abstract class Document {
 	/** return the Flesch readability score of this document */
 	public double getFleschScore()
 	{
-	    return 206.835 - (1.015 * ((double)this.getNumWords()/(double)this.getNumSentences())) - (84.6 * ((double)this.getNumSyllables()/(double)this.getNumWords()));
+	    return (double)206.835 - (1.015 * ((double)this.getNumWords()/(double)this.getNumSentences())) - (84.6 * ((double)this.getNumSyllables()/(double)this.getNumWords()));
 	}
 	
 	
