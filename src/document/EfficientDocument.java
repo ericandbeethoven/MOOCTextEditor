@@ -42,7 +42,22 @@ public class EfficientDocument extends Document {
 		// Provide this first line in the starter code.  
 		// Words are only strings of letters.  No numbers.
 		List<String> tokens = getTokens("[!?.]+|[a-zA-Z]+");
-		
+		int numWords = 0, numSyllables = 0, numSentences = 0;
+		for (int i = 0; i < tokens.size(); i++)
+		{
+			if (isWord(tokens.get(i)))
+			{
+				if (i == tokens.size() - 1)
+					numSentences += 1;
+				numWords++;
+				numSyllables += countSyllables(tokens.get(i));
+			}
+			else numSentences += 1;
+			
+		}
+		this.numSentences = numSentences;
+		this.numWords = numWords;
+		this.numSyllables = numSyllables;
 		// TODO: Finish this method.  Remember the countSyllables method from 
 		// Document.  That will come in handy here.
 	}
@@ -58,7 +73,7 @@ public class EfficientDocument extends Document {
 	@Override
 	public int getNumWords() {
 		//TODO: write this method.  Hint: It's simple
-	    return 0;
+	    return this.numWords;
 	}
 
 	/**
@@ -72,7 +87,7 @@ public class EfficientDocument extends Document {
 	@Override
 	public int getNumSentences() {
         //TODO: write this method.  Hint: It's simple
-        return 0;
+        return this.numSentences;
 	}
 
 	/**
@@ -86,7 +101,7 @@ public class EfficientDocument extends Document {
 	@Override
 	public int getNumSyllables() {
         //TODO: write this method.  Hint: It's simple
-        return 0;
+        return this.numSyllables;
 	}
 	
 	// Can be used for testing
